@@ -17,7 +17,8 @@ class UserController extends Controller
             return DataTables::of(User::all())
                 ->addIndexColumn()
                 ->addColumn('action', function (User $user) {
-                    return $user->id;
+                    return '<a href="'.route('user.edit',$user->id).'" class="btn btn-sm btn-outline-info borderd-none rounded-circle"><i class="mdi mdi-grease-pencil
+                    "></i></a>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -41,31 +42,33 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users, email',
+            'email' => 'required|email|unique:users',
             'contact_info' => 'required',
             'cnic' => 'required|unique:users,cnic',
-            'address' => 'required'
+            'address' => 'required',
+            'password' => 'required|min:8|same:confirm_password',
+            'confirm_password' => 'required'
         ]);
 
-        User::create($request->only('name','email','contact_info','cnic','address'));
+        User::create($request->only('name', 'email', 'contact_info', 'cnic', 'address','password'));
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show',['user' => $user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit',['user' => $user]);
     }
 
     /**

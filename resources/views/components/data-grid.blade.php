@@ -1,5 +1,5 @@
 @php
-    $tableClass = "table table-hover table-striped table-bordered"
+    $tableClass = "table table-hover table-striped table-bordered p-2"
 @endphp
 
 <div class="table-responsive">
@@ -11,8 +11,6 @@
                 @endforeach
             </tr>
         </thead>
-        <tbody>
-
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>

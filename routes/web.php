@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('layout.master');
 });
 
-Route::resource('user',UserController::class);
+Route::resource('user', UserController::class);

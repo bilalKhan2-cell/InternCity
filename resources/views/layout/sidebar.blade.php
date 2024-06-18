@@ -8,5 +8,11 @@
           <i class="mdi mdi-home menu-icon"></i>
         </a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('user.index')}}">
+          <span class="menu-title">Manage Users</span>
+          <i class="mdi mdi-home menu-icon"></i>
+        </a>
+      </li>
     </ul>
   </nav>

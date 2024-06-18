@@ -4,17 +4,17 @@
     @include('components.breadcrumbs', [
         'heading' => 'Users',
         'pageName' => 'Users',
-        'pageTitle' => 'Create User(s)',
+        'pageTitle' => 'View User Detail',
     ])
 @endsection
 
-@section('title','Register User')
+@section('title', $user->name)
 
 @section('content')
     @include('admin.users._form', [
-        'action' => route('user.store'),
-        'form_type' => 'save',
-        'method' => 'POST',
-        'user' => '',
+        'action' => '',
+        'form_type' => 'show',
+        'method' => '',
+        'user' => $user,
     ])
 @endsection

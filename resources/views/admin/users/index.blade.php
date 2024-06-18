@@ -12,13 +12,17 @@
 
 @php
     $tableID = 'tblUsers';
-    $tableHeadings = ['User ID', 'Name', 'Email', 'Contact Info', 'CNIC'];
+    $tableHeadings = ['User ID', 'Name', 'Email', 'Contact Info', 'CNIC', 'Action'];
 @endphp
 
 @section('content')
     <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary float-right">Register User</a>
     <br /><br />
-    @include('components.data-grid', ['headings' => $tableHeadings, 'tableId' => 'tblUsers'])
+    <div class="row">
+        <div class="col-12">
+            @include('components.data-grid', ['headings' => $tableHeadings, 'tableId' => 'tblUsers'])
+        </div>
+    </div>
 @endsection
 
 @push('script')
@@ -50,6 +54,12 @@
                     {
                         data: 'cnic',
                         name: 'cnic'
+                    },
+                    {
+                        data:'action',
+                        name:'action',
+                        orderable:false,
+                        searchable:false
                     }
                 ]
             });
